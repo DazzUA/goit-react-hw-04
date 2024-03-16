@@ -1,0 +1,23 @@
+import { useState } from "react";
+import SearchBar from "./components/SearchBar/SearchBar";
+
+function App() {
+  const [query, setQuery] = useState(null);
+
+  const onSetQueryValue = (queryValue) => {
+    setQuery(queryValue);
+  };
+
+  useState(() => {
+    if (query === null) {
+      return;
+    }
+  }, [query]);
+  return (
+    <>
+      <SearchBar onSubmit={onSetQueryValue} />
+    </>
+  );
+}
+
+export default App;
