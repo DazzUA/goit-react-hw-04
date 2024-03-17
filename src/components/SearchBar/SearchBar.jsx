@@ -1,18 +1,26 @@
+import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import css from "./SearchBar.module.css";
 
 const SearchBar = ({ onSubmit }) => {
+  const [query, setQuery] = useState("");
+
+  const handleChange = (event) => {
+    setQuery(event.target.value);
+  };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    const inputValue = event.currentTarget.elements.query.value;
-    if (inputValue.trim() === "") {
+    if (!query.trim()) {
       toast("Please enter some text to get a result!");
       return;
     }
-    onSubmit(inputValue);
+    onSubmit(query);
+    setQuery("");
   };
 
   return (
-    <header>
+    <header className={css.header}>
       <Toaster
         toastOptions={{
           style: {
@@ -28,8 +36,13 @@ const SearchBar = ({ onSubmit }) => {
           autoFocus
           placeholder="Search images and photos"
           name="query"
+          value={query}
+          onChange={handleChange}
+          className={css.input}
         />
-        <button type="submit">Search</button>
+        <button className={css.formBtn} type="submit">
+          Search
+        </button>
       </form>
     </header>
   );
