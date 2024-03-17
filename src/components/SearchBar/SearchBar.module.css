@@ -1,7 +1,7 @@
 .header {
   height: 80px;
   margin-bottom: 20px;
-  background-color: grey;
+  background-color: rgb(195, 156, 36);
   width: 1350px;
   display: flex;
   align-items: center;
@@ -16,6 +16,6 @@
 .formBtn {
   padding: 8px;
   border-radius: 14px;
-  background-color: rosybrown;
+  background-color: rgb(207, 210, 40);
   color: white;
 }
